@@ -3,33 +3,35 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* A altura do HTML é mantida em 100%, mas o body pode rolar */
     height: 100%;
-    /* CORREÇÃO PARA PERMITIR ROLAGEM NO CELULAR (Scroll) */
     overflow-x: hidden; /* Remove barra horizontal */
     overflow-y: auto;   /* Permite barra vertical quando necessário */
     font-family: 'Poppins', sans-serif;
-}
-
-/* Gradiente animado */
-.secret-container {
-    /* Mínimo de 100vh para ocupar a tela toda, mas pode crescer */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px; /* Mais padding vertical para telas pequenas */
+    
+    /* NOVO: Aplica o gradiente e a animação ao corpo do site */
     background: linear-gradient(-45deg, #005960, #2e9e8f, #79d7c8, #b2f0e8);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
-    box-sizing: border-box;
+    background-attachment: fixed; /* Opcional: mantém o gradiente fixo enquanto o conteúdo rola */
 }
 
 @keyframes gradient-animation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* Gradiente animado */
+.secret-container {
+    /* min-height é mantido para centralizar o conteúdo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; 
+    /* REMOVIDOS os estilos de background e animation duplicados */
+    box-sizing: border-box;
 }
 
 /* Ícone de Reciclagem */
@@ -125,10 +127,10 @@ body, html {
     background-position: center;
     position: relative;
     overflow: hidden;
-    height: 150px; /* Altura fixa para o card banner */
+    height: 150px; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Conteúdo no fundo do card */
+    justify-content: flex-end; 
 }
 
 /* MÁSCARA ESCURA PARA MELHORAR A LEITURA DO TEXTO */
@@ -139,12 +141,12 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Overlay escuro */
+    background: rgba(0, 0, 0, 0.4); 
     transition: background 0.3s;
 }
 
 .resource-card:hover::before {
-    background: rgba(0, 0, 0, 0.2); /* Fica um pouco mais claro no hover */
+    background: rgba(0, 0, 0, 0.2); 
 }
 
 /* Garante que o texto fique acima da máscara */
@@ -156,7 +158,7 @@ body, html {
 
 .resource-card:hover {
     transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
 }
 
 /* --- ESTILOS INDIVIDUAIS COM OS BANNERS --- */
@@ -209,7 +211,7 @@ body, html {
 }
 
 
-/* Ajustes para Telas Grandes (Efeito Hover na Caixa) */
+/* Ajustes de Responsividade (Media Queries) */
 @media (min-width: 601px) {
     .content-box:hover {
         transform: translateY(-5px) scale(1.01); 
@@ -217,7 +219,6 @@ body, html {
     }
 }
 
-/* Ajustes para Telas Pequenas (Celulares) */
 @media (max-width: 600px) {
     .content-box {
         padding: 30px 25px;
@@ -242,11 +243,12 @@ body, html {
     }
 }
 
-/* --- NOVO: ESTILOS DE RODAPÉ (FOOTER) --- */
+/* --- ESTILOS DE RODAPÉ (FOOTER) --- */
 
 .site-footer {
     padding: 20px 0;
     text-align: center;
+    /* Mantenho transparente para que o gradiente do body apareça */
     background-color: transparent; 
     width: 100%;
     box-sizing: border-box;
