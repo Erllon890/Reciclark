@@ -3,23 +3,20 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* A altura do HTML é mantida em 100%, mas o body pode rolar */
     height: 100%;
-    /* CORREÇÃO PARA PERMITIR ROLAGEM NO CELULAR (Scroll) */
-    overflow-x: hidden; /* Remove barra horizontal */
-    overflow-y: auto;   /* Permite barra vertical quando necessário */
+    overflow-x: hidden; 
+    overflow-y: auto;   
     font-family: 'Poppins', sans-serif;
 }
 
 /* Gradiente animado */
 .secret-container {
-    /* Mínimo de 100vh para ocupar a tela toda, mas pode crescer */
     min-height: 100vh;
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; /* Mais padding vertical para telas pequenas */
+    padding: 40px 20px; 
     background: linear-gradient(-45deg, #005960, #2e9e8f, #79d7c8, #b2f0e8);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
@@ -41,14 +38,8 @@ body, html {
 }
 
 @keyframes icon-pulse {
-    from {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    to {
-        transform: scale(1.1);
-        opacity: 1;
-    }
+    from { transform: scale(1); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
 }
 
 
@@ -63,13 +54,13 @@ body, html {
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     max-width: 700px;
-    width: 100%; /* Garante que ocupe a largura máxima no contêiner */
+    width: 100%; 
     animation: fade-in-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
     box-sizing: border-box;
 }
 
-/* Animações */
+/* Animações e Títulos (Sem Alteração) */
 @keyframes fade-in-up {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -88,7 +79,6 @@ body, html {
     from { text-shadow: 0 0 10px rgba(173, 255, 216, 0.7), 0 0 20px rgba(127, 255, 212, 0.7); }
     to { text-shadow: 0 0 20px rgba(173, 255, 216, 1), 0 0 35px rgba(127, 255, 212, 1); }
 }
-
 
 .subtitle {
     font-size: 1.2rem;
@@ -115,42 +105,95 @@ body, html {
     margin-bottom: 40px;
 }
 
-/* Estilo para cada Card */
+/* Estilo Base para cada Card */
 .resource-card {
     flex: 1 1 200px; 
-    background: rgba(255, 255, 255, 0.1); 
+    
+    /* REMOVIDO: background: rgba(255, 255, 255, 0.1); */
+    
     padding: 20px 15px;
     border-radius: 10px;
     text-decoration: none; 
     color: inherit; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Removido background do transition */
     text-align: center;
+    
+    /* Configurações de Fundo Comum para Banners */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    height: 150px; /* Altura fixa para o card banner */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Conteúdo no fundo do card */
+}
+
+/* MÁSCARA ESCURA PARA MELHORAR A LEITURA DO TEXTO */
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Overlay escuro */
+    transition: background 0.3s;
+}
+
+.resource-card:hover::before {
+    background: rgba(0, 0, 0, 0.2); /* Fica um pouco mais claro no hover */
+}
+
+/* Garante que o texto fique acima da máscara */
+.resource-card > * {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .resource-card:hover {
     transform: translateY(-5px); 
-    background: rgba(255, 255, 255, 0.2); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
 }
 
+/* --- ESTILOS INDIVIDUAIS COM OS BANNERS --- */
+
+/* CARD 1: Guias de Recife */
+.card-1 {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG92q-WwWkrMSQKJ6yfyzHT-b-32wEMjivrg&usqp=CAU");
+}
+
+/* CARD 2: Pontos de Coleta */
+.card-2 {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg98x_YKXBe11DNr58dATI4IAzKMEc04m2YVortJDqFUoq1TGTnK6Itf4&s=10");
+}
+
+/* CARD 3: Cooperativas e Ecopontos */
+.card-3 {
+    background-image: url("https://gncnews.com.br/img/crop?img=f7b75a0500d5fd3559bcc22763b5d79a.png&w=800&h=400&fit=crop&fm=jpq&q=90");
+}
+
+/* Ajustes no texto do card */
 .card-icon {
     font-size: 2rem;
     display: block;
     margin-bottom: 5px;
+    opacity: 0.9;
 }
 
 .card-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Aumentado um pouco */
     margin: 5px 0 3px 0;
-    font-weight: 600;
-    color: #b2f0e8; 
+    font-weight: 700;
+    color: white; /* Cor branca para contraste */
 }
 
 .card-description {
     font-size: 0.9rem;
-    margin: 0;
-    opacity: 0.8;
+    margin: 0 0 10px 0; /* Mais margem na parte inferior */
+    opacity: 0.9;
 }
 
 /* Assinatura */
