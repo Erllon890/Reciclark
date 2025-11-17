@@ -1,4 +1,4 @@
-/* Configurações Globais */
+/* Configurações Globais (Sem Alteração) */
 body, html {
     margin: 0;
     padding: 0;
@@ -8,10 +8,9 @@ body, html {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Gradiente animado com cores da natureza */
+/* Gradiente animado (Sem Alteração) */
 .secret-container {
     height: 100vh;
-    /* Usa Flexbox para empilhar verticalmente (column) */
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -29,17 +28,14 @@ body, html {
     100% { background-position: 0% 50%; }
 }
 
-/* NOVO: Estilo para o Ícone de Reciclagem (GRANDE e Separado) */
+/* Ícone de Reciclagem (Sem Alteração) */
 .recycle-icon {
     font-size: 8rem; 
     line-height: 1; 
-    /* Margem para separar da caixa abaixo */
     margin-bottom: 30px; 
-    
     animation: icon-pulse 2s infinite alternate ease-in-out; 
 }
 
-/* Animação de pulsação sutil do Ícone */
 @keyframes icon-pulse {
     from {
         transform: scale(1);
@@ -52,7 +48,7 @@ body, html {
 }
 
 
-/* Caixa de conteúdo com fundo verde escuro e transparente (Glassmorphism) */
+/* Caixa de Conteúdo (Sem Alteração na Base) */
 .content-box {
     text-align: center;
     color: white;
@@ -67,19 +63,12 @@ body, html {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
-/* Animação de Entrada do Conteúdo */
+/* Animações (Sem Alteração) */
 @keyframes fade-in-up {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Título Principal */
 .main-title {
     font-family: 'Cinzel', serif;
     font-size: 4.5rem;
@@ -89,18 +78,12 @@ body, html {
     animation: text-glow 2.5s ease-in-out infinite alternate;
 }
 
-/* Animação de brilho do texto */
 @keyframes text-glow {
-    from {
-        text-shadow: 0 0 10px rgba(173, 255, 216, 0.7), 0 0 20px rgba(127, 255, 212, 0.7);
-    }
-    to {
-        text-shadow: 0 0 20px rgba(173, 255, 216, 1), 0 0 35px rgba(127, 255, 212, 1);
-    }
+    from { text-shadow: 0 0 10px rgba(173, 255, 216, 0.7), 0 0 20px rgba(127, 255, 212, 0.7); }
+    to { text-shadow: 0 0 20px rgba(173, 255, 216, 1), 0 0 35px rgba(127, 255, 212, 1); }
 }
 
 
-/* Subtítulo */
 .subtitle {
     font-size: 1.2rem;
     font-weight: 300;
@@ -108,15 +91,64 @@ body, html {
     opacity: 0.9;
 }
 
-/* Mensagem de Agradecimento */
+/* MENSAGEM DE AGRADECIMENTO (Ajuste a margem inferior para o novo espaço) */
 .thank-you-message {
     font-size: 1rem;
     line-height: 1.6;
     margin-top: 30px;
+    margin-bottom: 20px; /* Reduzida para encaixar os cards */
     opacity: 0.9;
 }
 
-/* Assinatura */
+/* NOVO: Estilo para o Contêiner dos Cards (Flexbox) */
+.resource-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas pequenas */
+    gap: 15px; /* Espaço entre os cards */
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* NOVO: Estilo para cada Card */
+.resource-card {
+    flex: 1 1 200px; /* Cresce e encolhe, com largura mínima de 200px */
+    background: rgba(255, 255, 255, 0.1); /* Fundo claro e transparente */
+    padding: 20px 15px;
+    border-radius: 10px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Mantém a cor do texto do contêiner */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, background 0.3s;
+    text-align: center;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px); /* Efeito de levitação no hover */
+    background: rgba(255, 255, 255, 0.2); /* Fica um pouco mais sólido no hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin: 5px 0 3px 0;
+    font-weight: 600;
+    color: #b2f0e8; /* Cor que combina com a assinatura */
+}
+
+.card-description {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Assinatura (Ajustada para a nova margem) */
 .signature {
     margin-top: 40px;
     font-family: 'Cinzel', serif;
@@ -128,7 +160,7 @@ body, html {
 }
 
 
-/* Ajustes para Telas Grandes (Efeito Hover na Caixa) */
+/* Ajustes para Telas Grandes (Efeito Hover na Caixa - Sem Alteração) */
 @media (min-width: 601px) {
     .content-box:hover {
         transform: translateY(-5px) scale(1.01); 
@@ -150,6 +182,12 @@ body, html {
     }
     .subtitle {
         font-size: 1rem;
+    }
+    /* Os cards empilham em telas pequenas devido ao flex-wrap */
+    .resource-cards-container {
+        flex-direction: column; /* Força o empilhamento em telas pequenas */
+        gap: 10px;
+        margin-bottom: 20px;
     }
     .signature {
         margin-top: 30px;
