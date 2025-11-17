@@ -1,0 +1,115 @@
+/* Configurações Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* NOVO! Gradiente animado com cores da natureza */
+.secret-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(-45deg, #005960, #2e9e8f, #79d7c8, #b2f0e8);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    box-sizing: border-box;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* NOVO! Caixa de conteúdo com tom verde escuro e transparente */
+.content-box {
+    text-align: center;
+    color: white;
+    background: rgba(0, 47, 40, 0.4); /* Fundo verde-escuro semi-transparente */
+    padding: 40px 60px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda mais clara */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidade com Safari */
+    max-width: 700px;
+    animation: fade-in-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Animação de Entrada do Conteúdo (sem alteração) */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título Principal */
+.main-title {
+    font-family: 'Cinzel', serif;
+    font-size: 4.5rem;
+    margin: 0;
+    color: #ffffff;
+    /* NOVO! Brilho do texto em tons de verde-água */
+    text-shadow: 0 0 10px rgba(173, 255, 216, 0.8), 0 0 20px rgba(127, 255, 212, 0.8);
+    animation: text-glow 2.5s ease-in-out infinite alternate;
+}
+
+/* NOVO! Animação de brilho com as novas cores */
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 10px rgba(173, 255, 216, 0.7), 0 0 20px rgba(127, 255, 212, 0.7);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(173, 255, 216, 1), 0 0 35px rgba(127, 255, 212, 1);
+    }
+}
+
+/* Subtítulo */
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 10px;
+    opacity: 0.9; /* Opacidade levemente aumentada para melhor leitura */
+}
+
+/* Mensagem de Agradecimento */
+.thank-you-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 30px;
+    opacity: 0.9;
+}
+
+/* NOVO! Assinatura com cor coordenada */
+.signature {
+    margin-top: 40px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: #b2f0e8; /* Cor verde-claro tirada do gradiente */
+    opacity: 0.85;
+}
+
+/* Ajustes para Telas Pequenas (Celulares) */
+@media (max-width: 600px) {
+    .content-box {
+        padding: 30px 25px;
+    }
+    .main-title {
+        font-size: 3rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+}
