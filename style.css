@@ -1,21 +1,25 @@
-/* Configurações Globais (Sem Alteração) */
+/* Configurações Globais */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
+    /* A altura do HTML é mantida em 100%, mas o body pode rolar */
     height: 100%;
-    overflow: hidden; 
+    /* CORREÇÃO PARA PERMITIR ROLAGEM NO CELULAR (Scroll) */
+    overflow-x: hidden; /* Remove barra horizontal */
+    overflow-y: auto;   /* Permite barra vertical quando necessário */
     font-family: 'Poppins', sans-serif;
 }
 
-/* Gradiente animado (Sem Alteração) */
+/* Gradiente animado */
 .secret-container {
-    height: 100vh;
+    /* Mínimo de 100vh para ocupar a tela toda, mas pode crescer */
+    min-height: 100vh;
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px; /* Mais padding vertical para telas pequenas */
     background: linear-gradient(-45deg, #005960, #2e9e8f, #79d7c8, #b2f0e8);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
@@ -28,7 +32,7 @@ body, html {
     100% { background-position: 0% 50%; }
 }
 
-/* Ícone de Reciclagem (Sem Alteração) */
+/* Ícone de Reciclagem */
 .recycle-icon {
     font-size: 8rem; 
     line-height: 1; 
@@ -48,7 +52,7 @@ body, html {
 }
 
 
-/* Caixa de Conteúdo (Sem Alteração na Base) */
+/* Caixa de conteúdo (Glassmorphism) */
 .content-box {
     text-align: center;
     color: white;
@@ -59,11 +63,13 @@ body, html {
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     max-width: 700px;
+    width: 100%; /* Garante que ocupe a largura máxima no contêiner */
     animation: fade-in-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    box-sizing: border-box;
 }
 
-/* Animações (Sem Alteração) */
+/* Animações */
 @keyframes fade-in-up {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -91,41 +97,40 @@ body, html {
     opacity: 0.9;
 }
 
-/* MENSAGEM DE AGRADECIMENTO (Ajuste a margem inferior para o novo espaço) */
 .thank-you-message {
     font-size: 1rem;
     line-height: 1.6;
     margin-top: 30px;
-    margin-bottom: 20px; /* Reduzida para encaixar os cards */
+    margin-bottom: 20px; 
     opacity: 0.9;
 }
 
-/* NOVO: Estilo para o Contêiner dos Cards (Flexbox) */
+/* Estilo para o Contêiner dos Cards */
 .resource-cards-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas pequenas */
-    gap: 15px; /* Espaço entre os cards */
+    flex-wrap: wrap; 
+    gap: 15px; 
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-/* NOVO: Estilo para cada Card */
+/* Estilo para cada Card */
 .resource-card {
-    flex: 1 1 200px; /* Cresce e encolhe, com largura mínima de 200px */
-    background: rgba(255, 255, 255, 0.1); /* Fundo claro e transparente */
+    flex: 1 1 200px; 
+    background: rgba(255, 255, 255, 0.1); 
     padding: 20px 15px;
     border-radius: 10px;
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: inherit; /* Mantém a cor do texto do contêiner */
+    text-decoration: none; 
+    color: inherit; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s, background 0.3s;
     text-align: center;
 }
 
 .resource-card:hover {
-    transform: translateY(-5px); /* Efeito de levitação no hover */
-    background: rgba(255, 255, 255, 0.2); /* Fica um pouco mais sólido no hover */
+    transform: translateY(-5px); 
+    background: rgba(255, 255, 255, 0.2); 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +144,7 @@ body, html {
     font-size: 1.1rem;
     margin: 5px 0 3px 0;
     font-weight: 600;
-    color: #b2f0e8; /* Cor que combina com a assinatura */
+    color: #b2f0e8; 
 }
 
 .card-description {
@@ -148,7 +153,7 @@ body, html {
     opacity: 0.8;
 }
 
-/* Assinatura (Ajustada para a nova margem) */
+/* Assinatura */
 .signature {
     margin-top: 40px;
     font-family: 'Cinzel', serif;
@@ -160,7 +165,7 @@ body, html {
 }
 
 
-/* Ajustes para Telas Grandes (Efeito Hover na Caixa - Sem Alteração) */
+/* Ajustes para Telas Grandes (Efeito Hover na Caixa) */
 @media (min-width: 601px) {
     .content-box:hover {
         transform: translateY(-5px) scale(1.01); 
@@ -183,9 +188,8 @@ body, html {
     .subtitle {
         font-size: 1rem;
     }
-    /* Os cards empilham em telas pequenas devido ao flex-wrap */
     .resource-cards-container {
-        flex-direction: column; /* Força o empilhamento em telas pequenas */
+        flex-direction: column; 
         gap: 10px;
         margin-bottom: 20px;
     }
