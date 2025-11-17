@@ -3,20 +3,23 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
+    /* A altura do HTML é mantida em 100%, mas o body pode rolar */
     height: 100%;
-    overflow-x: hidden; 
-    overflow-y: auto;   
+    /* CORREÇÃO PARA PERMITIR ROLAGEM NO CELULAR (Scroll) */
+    overflow-x: hidden; /* Remove barra horizontal */
+    overflow-y: auto;   /* Permite barra vertical quando necessário */
     font-family: 'Poppins', sans-serif;
 }
 
 /* Gradiente animado */
 .secret-container {
+    /* Mínimo de 100vh para ocupar a tela toda, mas pode crescer */
     min-height: 100vh;
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; 
+    padding: 40px 20px; /* Mais padding vertical para telas pequenas */
     background: linear-gradient(-45deg, #005960, #2e9e8f, #79d7c8, #b2f0e8);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
@@ -60,7 +63,7 @@ body, html {
     box-sizing: border-box;
 }
 
-/* Animações e Títulos (Sem Alteração) */
+/* Animações e Títulos */
 @keyframes fade-in-up {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -105,18 +108,16 @@ body, html {
     margin-bottom: 40px;
 }
 
-/* Estilo Base para cada Card */
+/* Estilo Base para cada Card (Banner) */
 .resource-card {
     flex: 1 1 200px; 
-    
-    /* REMOVIDO: background: rgba(255, 255, 255, 0.1); */
     
     padding: 20px 15px;
     border-radius: 10px;
     text-decoration: none; 
     color: inherit; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s; /* Removido background do transition */
+    transition: transform 0.3s, box-shadow 0.3s; 
     text-align: center;
     
     /* Configurações de Fundo Comum para Banners */
@@ -184,15 +185,15 @@ body, html {
 }
 
 .card-title {
-    font-size: 1.2rem; /* Aumentado um pouco */
+    font-size: 1.2rem; 
     margin: 5px 0 3px 0;
     font-weight: 700;
-    color: white; /* Cor branca para contraste */
+    color: white; 
 }
 
 .card-description {
     font-size: 0.9rem;
-    margin: 0 0 10px 0; /* Mais margem na parte inferior */
+    margin: 0 0 10px 0; 
     opacity: 0.9;
 }
 
@@ -239,4 +240,31 @@ body, html {
     .signature {
         margin-top: 30px;
     }
+}
+
+/* --- NOVO: ESTILOS DE RODAPÉ (FOOTER) --- */
+
+.site-footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: transparent; 
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.footer-logo {
+    width: 70px; 
+    height: auto;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.footer-text {
+    font-size: 0.8rem; 
+    color: #002f28; 
+    font-weight: 500;
+    margin: 0;
+    padding: 0 10px;
 }
